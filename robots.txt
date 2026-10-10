@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://onewordlive.netlify.app/sitemap.xml

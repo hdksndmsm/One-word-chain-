@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta content='#0a0a0a' name='theme-color'/>
+  <meta content='One word. Everyone can change it. What will the internet say next? Play ONE WORD live.' name='description'/>
+  <title>ONE WORD - The Internet&#39;s Word</title>
+  <b:include data='blog' name='all-head-content'/>
+  <link href='https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&amp;display=swap' rel='stylesheet'/>
+  <!-- MONETAG: paste your Multitag script here, just above the closing head tag, after approval -->
+  <b:skin><![CDATA[
+  html,body{margin:0;padding:0;background:#0a0a0a}
+  body{color:#f4efe8;font-family:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh}
+  #navbar,.feed-links,#Blog1{display:none!important}
+  .page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 22px;box-sizing:border-box}
+  .brand{font-weight:800;letter-spacing:.3em;font-size:.85rem;color:#8a8580;margin-bottom:34px}
+  .brand b{color:#c8ff3a}
+  h1{font-size:clamp(2.2rem,9vw,4.2rem);line-height:1.05;margin:0 0 16px;font-weight:800;letter-spacing:-.02em}
+  p.sub{color:#a9a39b;max-width:460px;margin:0 auto 34px;font-size:1.05rem}
+  a.play{display:inline-block;background:#c8ff3a;color:#0a0a0a;text-decoration:none;font-weight:800;letter-spacing:.25em;font-size:1rem;padding:20px 44px;border-radius:999px}
+  a.play:active{transform:scale(.97)}
+  a.play:focus{outline:2px solid #f4efe8;outline-offset:4px}
+  .tag{margin-top:36px;color:#8a8580;font-size:.9rem}
+  .posts{display:none}
+  ]]></b:skin>
+</head>
+<body>
+  <div class='page'>
+    <div class='brand'>ONE <b>WORD</b></div>
+    <h1>The Internet&#39;s Word</h1>
+    <p class='sub'>One live word for the whole world. Change it, and everyone sees it instantly. What will the internet say next?</p>
+    <a class='play' href='https://onewordlive.netlify.app/' target='_blank' rel='noopener'>PLAY NOW</a>
+    <div class='tag'>Someone will change this after you.</div>
+  </div>
+  <div class='posts'>
+    <b:section class='main' id='main' showaddelement='no'>
+      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'/>
+    </b:section>
+  </div>
+</body>
+</html>
