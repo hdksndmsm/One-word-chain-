@@ -8,6 +8,21 @@
 <meta property="og:title" content="ONE WORD — The Internet's Word">
 <meta property="og:description" content="One word. Everyone can change it. What will the internet say next?">
 <meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://onewordlive.netlify.app/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Crect x='10' y='14' width='44' height='36' rx='8' fill='none' stroke='%23c8ff3a' stroke-width='4'/%3E%3Ctext x='32' y='42' font-size='24' font-weight='800' text-anchor='middle' fill='%23f4efe8' font-family='Arial'%3E1%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ONE WORD">
+<meta property="og:url" content="https://onewordlive.netlify.app/">
+<meta property="og:image" content="https://onewordlive.netlify.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ONE WORD: one live word shared by the whole internet">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://onewordlive.netlify.app/og-image.png">
+<meta name="twitter:title" content="ONE WORD — The Internet's Word">
+<meta name="twitter:description" content="One word. Everyone can change it. What will the internet say next?">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ONE WORD","url":"https://onewordlive.netlify.app/","description":"A shared internet experiment: one live word or message that anyone can change in real time.","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
@@ -18,6 +33,7 @@ main{max-width:820px;margin:0 auto;padding:max(22px,env(safe-area-inset-top)) 18
 header{display:flex;justify-content:space-between;align-items:center}
 .brand{font-weight:800;letter-spacing:.18em;font-size:.95rem}.brand b{color:var(--ac)}
 #mode{font-size:.72rem;color:var(--mute);letter-spacing:.15em}
+h1.label{margin-bottom:0;font-weight:400}
 .label{text-align:center;margin-top:44px;font-size:.75rem;letter-spacing:.35em;color:var(--mute)}
 button{font:inherit;cursor:pointer}
 .edit{display:grid;place-items:center;width:46px;height:46px;margin:12px auto 0;border:1px solid var(--ac);border-radius:50%;background:none;color:var(--ac);transition:transform .15s}
@@ -63,6 +79,37 @@ li.new{animation:rise .5s both}
 .pv{margin-bottom:8px}.pv>div{text-align:left}
 .meta{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--mute)}
 .foot{text-align:center;color:var(--mute);margin-top:44px;font-size:.9rem}#note{display:block;margin-top:6px;font-size:.75rem}
+/* ---- share / toast ---- */
+#live{cursor:pointer}
+.acts{display:flex;justify-content:center;gap:10px;margin:-14px 0 30px}
+.ghost{background:none;border:1px solid var(--ac);color:var(--ac);border-radius:999px;padding:10px 18px;font-size:.72rem;letter-spacing:.18em;font-weight:600;min-height:0;min-width:0}
+.ghost:active{transform:scale(.96)}
+#toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#141210;border:1px solid var(--ac);padding:10px 14px;border-radius:999px;display:flex;gap:12px;align-items:center;z-index:30;max-width:92vw;font-size:.9rem;transition:opacity .25s,transform .25s}
+#toast.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+/* ---- recent picks ---- */
+#picks{margin-bottom:34px}
+.pk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:7px 0}
+.pk span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pk em{font-style:normal;color:var(--mute);font-size:.85rem}
+.pk i{grid-column:1/3;display:block;height:5px;border-radius:3px;background:var(--ac);transition:width .4s}
+.pkn{color:var(--mute);font-size:.75rem;margin-top:6px}
+/* ---- info + footer (same single page) ---- */
+.intro{text-align:center;color:var(--mute);max-width:520px;margin:8px auto 0;font-size:.95rem}
+.info{margin-top:56px}
+.info h2{margin-bottom:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 34px;padding:0;list-style:none}
+.steps li{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:.92rem;color:#d9d3ca}
+.steps b{display:block;color:var(--ac);font-size:.7rem;letter-spacing:.25em;margin-bottom:4px}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--ac)}
+details[open] summary::after{content:"-"}
+details p,details ul{color:#cfc9c0;font-size:.92rem;margin:8px 0 0}
+details ul{padding-left:18px}
+.legal{margin-top:34px}
+.legal summary{font-size:.8rem;letter-spacing:.2em;color:var(--mute);font-weight:600}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
 /* ---- modal ---- */
 dialog{border:1px solid var(--line);background:#100e0c;color:var(--fg);border-radius:20px;padding:22px 18px;width:min(94vw,480px);max-height:92vh;overflow:auto;opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s,overlay .25s allow-discrete,display .25s allow-discrete}
 dialog[open]{opacity:1;transform:none}@starting-style{dialog[open]{opacity:0;transform:translateY(16px)}}
@@ -90,13 +137,15 @@ input[type=text],textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg)
 <body>
 <main>
   <header><div class="brand">ONE <b>WORD</b></div><div id="mode">LIVE</div></header>
-  <div class="label">THE INTERNET'S WORD</div>
+  <h1 class="label">THE INTERNET'S WORD</h1>
   <button class="edit" id="edit" aria-label="Create: replace the live word">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
   </button>
+  <p class="intro">One live word for the whole internet. Change it, and everyone sees it instantly.</p>
   <section id="live" aria-live="polite"><div></div></section>
   <div id="by"></div>
   <div id="held">Held for <b id="hv">0s</b></div>
+  <div class="acts"><button type="button" class="ghost" id="share">SHARE</button><button type="button" class="ghost" id="card">SAVE CARD</button></div>
 
   <section class="stats" aria-label="Statistics">
     <div class="s"><span>TOTAL CHANGES</span><b id="tot">0</b></div>
@@ -104,10 +153,43 @@ input[type=text],textarea{width:100%;font:inherit;font-size:1rem;color:var(--fg)
     <div class="s"><span>RECORD WORD</span><b id="rw">-</b></div>
   </section>
 
+  <section id="picks" aria-labelledby="pkh" hidden>
+    <h2 id="pkh">RECENT PICKS</h2>
+    <div id="pklist"></div>
+    <div class="pkn" id="pkn"></div>
+  </section>
+
   <h2>RECENT CHANGES</h2>
   <ul id="hist"></ul>
+  <section class="info" aria-labelledby="how">
+    <h2 id="how">HOW IT WORKS</h2>
+    <ol class="steps">
+      <li><b>01</b>There is one live word, or a short message, shared by everyone on the internet.</li>
+      <li><b>02</b>Tap the pencil, write your own, pick a style and press CREATE.</li>
+      <li><b>03</b>It replaces the live content for every visitor. After 10 seconds, someone else can change it.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    <details><summary>What is ONE WORD?</summary><p>A tiny shared internet experiment. At any moment there is exactly one live word or message, and anyone can replace it.</p></details>
+    <details><summary>Do I need an account?</summary><p>No. There is no login, no profile and no tracking of who you are. Your name is optional.</p></details>
+    <details><summary>How long can a word or message be?</summary><p>A word is 2 to 20 letters or numbers with no spaces. A message can be up to 20 words and 140 characters.</p></details>
+    <details><summary>Can I change it as often as I want?</summary><p>Yes, with a 10 second cooldown after each change. The cooldown is enforced on the server.</p></details>
+
+    <div class="legal">
+      <details><summary>RULES</summary><ul>
+        <li>No hate speech, slurs, threats or harassment.</li>
+        <li>No sexual or explicit content.</li>
+        <li>No personal information, links, ads or spam.</li>
+        <li>We may remove content, reset the game or block abuse at any time.</li>
+      </ul></details>
+      <details><summary>PRIVACY</summary><p>We store what you create (word or message, optional name, style), a random anonymous visitor ID used for the cooldown, and a one-way hashed network identifier used to limit spam. Your browser stores your optional name and cooldown timer. Everything you create is public, so do not enter personal information. This site may show third-party ads, and those partners may use cookies. We use Supabase for data, Netlify for hosting and Google Fonts. The site is not directed to children under 13. Contact: zaackbenny@gmail.com</p></details>
+      <details><summary>DISCLAIMER</summary><p>All content is created by anonymous visitors. We do not review it in advance, endorse it or take responsibility for it, and it may be offensive or inaccurate despite our filters. The site is provided as is, without warranty, and may be paused or reset at any time. We are not responsible for third-party ads or external sites.</p></details>
+    </div>
+  </section>
   <div class="foot">Someone will change this after you.<span id="note"></span></div>
 </main>
+
+<div id="toast" role="status"></div>
 
 <dialog id="dlg" aria-labelledby="dt">
   <form id="form" autocomplete="off">
@@ -226,8 +308,33 @@ function renderHist(){
   });
   if (!hist.length) ul.innerHTML = '<li><span class="meta">No changes yet.</span></li>';
   firstHist = false;
+  renderPicks();
 }
-function setCur(c){ cur = c; renderLive(); renderStats(); tick(); }
+function renderPicks(){
+  // counts the words from the live word + recent history (real data, small sample)
+  const sample = (cur ? [cur] : []).concat(hist).slice(0, 10);
+  const box = $("picks");
+  if (sample.length < 3) { box.hidden = true; return; }
+  const map = new Map();
+  sample.forEach(c => {
+    const k = String(c.content).toLowerCase();
+    const e = map.get(k) || { c:c, n:0 };
+    e.n++; map.set(k, e);
+  });
+  const top = [...map.values()].sort((a, b) => b.n - a.n).slice(0, 5);
+  const max = top[0].n;
+  const list = $("pklist"); list.textContent = "";
+  top.forEach(e => {
+    const row = document.createElement("div"); row.className = "pk";
+    const a = document.createElement("span"); a.textContent = previewText(e.c);
+    const b = document.createElement("em"); b.textContent = e.n + (e.n === 1 ? " time" : " times");
+    const bar = document.createElement("i"); bar.style.width = Math.round(e.n / max * 100) + "%";
+    row.append(a, b, bar); list.appendChild(row);
+  });
+  $("pkn").textContent = "From the last " + sample.length + " words. A small sample, not a vote.";
+  box.hidden = false;
+}
+function setCur(c){ cur = c; renderLive(); renderStats(); renderPicks(); tick(); }
 
 // ---------- 1-second tick: held, "x ago", cooldown button ----------
 function tick(){
@@ -302,6 +409,7 @@ $("form").addEventListener("submit", async e => {
     setCd(COOL / 1000);
     try { localStorage.setItem("ow_name", r.data.by === "guest" ? "" : r.data.by); } catch(_){}
     $("dlg").close();
+    toast("Created! Share it with friends.", "SHARE", doShare);
   } catch(err){
     const m = String(err && err.message || ""), w = (m.match(/^WAIT:(\d+)/) || [])[1];
     if (w) { setCd(+w); $("err").textContent = "Wait "+w+"s before creating again."; }
@@ -327,6 +435,86 @@ function demoCreate(d){
   demoShow(D);
 }
 function demoShow(D){ stats = D.stats; hist = D.hist; renderHist(); setCur(D.cur); }
+
+// ---------- share, copy link, save card, toast ----------
+const SITE_URL = "https://onewordlive.netlify.app/";
+let toastT;
+function toast(msg, label, fn){
+  const t = $("toast"); t.textContent = msg;
+  if (label) { const b = document.createElement("button"); b.type = "button"; b.className = "ghost"; b.textContent = label; b.onclick = () => { t.classList.remove("on"); fn(); }; t.appendChild(b); }
+  t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("on"), 5000);
+}
+function shareText(){
+  const w = cur ? (cur.contentType === "word" ? cur.content.toUpperCase() : '"' + cur.content + '"') : "";
+  return "The internet's word right now: " + w + ". What will you change it to?";
+}
+async function copyText(t){
+  try { await navigator.clipboard.writeText(t); return true; } catch(_){
+    const a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select();
+    let ok = false; try { ok = document.execCommand("copy"); } catch(_){} a.remove(); return ok;
+  }
+}
+async function doShare(){
+  try {
+    if (navigator.share) await navigator.share({ title:"ONE WORD", text:shareText(), url:SITE_URL });
+    else toast((await copyText(shareText()+" "+SITE_URL)) ? "Link copied" : "Could not copy");
+  } catch(_){}
+}
+$("share").onclick = doShare;
+$("live").addEventListener("click", async () => { toast((await copyText(shareText()+" "+SITE_URL)) ? "Link copied" : "Could not copy"); });
+
+function rr(x, a, b, w, h, r){
+  x.beginPath(); x.moveTo(a+r, b); x.arcTo(a+w, b, a+w, b+h, r); x.arcTo(a+w, b+h, a, b+h, r); x.arcTo(a, b+h, a, b, r); x.arcTo(a, b, a+w, b, r); x.closePath();
+}
+async function makeCard(){
+  if (document.fonts && document.fonts.load) { try { await document.fonts.load('800 64px "Bricolage Grotesque"'); } catch(_){} }
+  const W = 1080, H = 1920, cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const x = cv.getContext("2d"), F = '"Bricolage Grotesque", system-ui, sans-serif', AC = "#c8ff3a", FG = "#f4efe8", MU = "#8a8580";
+  x.fillStyle = "#0a0a0a"; x.fillRect(0, 0, W, H);
+  x.textAlign = "center"; x.textBaseline = "middle";
+  x.fillStyle = FG; x.font = "800 44px " + F; x.fillText("ONE WORD", W/2, 200);
+  x.fillStyle = MU; x.font = "600 30px " + F; x.fillText("THE INTERNET'S WORD", W/2, 262);
+  let bottom = H/2;
+  if (cur.contentType === "word") {
+    const chars = [...cur.content.toUpperCase()], rows = [];
+    for (let i = 0; i < chars.length; i += 10) rows.push(chars.slice(i, i+10));
+    const per = Math.max(...rows.map(r => r.length)), gap = 14;
+    const ts = Math.min(150, Math.floor((W-160-(per-1)*gap)/per)), th = Math.round(ts*1.25);
+    const total = rows.length*th + (rows.length-1)*gap; let y = H/2 - total/2;
+    rows.forEach(r => {
+      let xx = (W - (r.length*ts + (r.length-1)*gap)) / 2;
+      r.forEach(ch => {
+        x.fillStyle = "#14110e"; rr(x, xx, y, ts, th, ts*.16); x.fill();
+        x.lineWidth = 6; x.strokeStyle = AC; x.stroke();
+        x.fillStyle = FG; x.font = "800 " + Math.round(ts*.62) + "px " + F; x.fillText(ch, xx+ts/2, y+th/2+4);
+        xx += ts + gap;
+      });
+      y += th + gap;
+    });
+    bottom = y;
+  } else {
+    x.font = "600 62px " + F;
+    const words = cur.content.split(" "), lines = []; let line = "";
+    words.forEach(w => { const t = line ? line+" "+w : w; if (x.measureText(t).width > 800 && line) { lines.push(line); line = w; } else line = t; });
+    lines.push(line);
+    const lh = 80, bh = lines.length*lh + 110, y0 = H/2 - bh/2;
+    x.fillStyle = "#0f0d0b"; rr(x, 90, y0, W-180, bh, 36); x.fill(); x.lineWidth = 5; x.strokeStyle = AC; x.stroke();
+    x.fillStyle = FG; lines.forEach((l, i) => x.fillText(l, W/2, y0 + 55 + lh/2 + i*lh));
+    bottom = y0 + bh;
+  }
+  x.fillStyle = MU; x.font = "600 36px " + F; x.fillText("by " + cur.by + "  ·  held " + dur((now()-cur.updatedAt)/1000), W/2, bottom + 70);
+  x.fillStyle = FG; x.font = "600 44px " + F; x.fillText("What will you change it to?", W/2, H-300);
+  x.fillStyle = AC; x.font = "800 46px " + F; x.fillText("onewordlive.netlify.app", W/2, H-225);
+  return new Promise(res => cv.toBlob(res, "image/png"));
+}
+$("card").onclick = async () => {
+  if (!cur) return;
+  try {
+    const b = await makeCard(), u = URL.createObjectURL(b), a = document.createElement("a");
+    a.href = u; a.download = "one-word-card.png"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(u), 4000); toast("Card saved");
+  } catch(_){ toast("Could not make the card"); }
+};
 
 // ---------- boot ----------
 if (!SB_URL || !SB_KEY || !window.supabase){
